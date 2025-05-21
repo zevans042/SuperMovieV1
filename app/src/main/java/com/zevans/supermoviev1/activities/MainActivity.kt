@@ -16,7 +16,7 @@ import com.example.supermoviev1.databinding.ActivityMainBinding
 import com.zevans.supermoviev1.adapters.SuperMovieAdapter
 import com.zevans.supermoviev1.data.Supermovie
 
-class MainActivity<Supermovie> : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: SuperMovieAdapter
