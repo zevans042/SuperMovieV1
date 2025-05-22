@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/fondo"
+        android:background="@color/Fondo"
         android:padding="10dp">
 
         <!-- Título -->
@@ -52,7 +52,7 @@
             android:adjustViewBounds="true"
             android:maxHeight="200dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/poster_placeholder" />
+            android:src="@drawable/poster_placeholder" />
 
         <!-- Sinopsis -->
 
