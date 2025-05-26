@@ -96,7 +96,7 @@ class DetailActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = service.findById(id)
+                val response = service.findById(identifier = id)
 
                 runOnUiThread {
                     binding.content.progress.visibility = View.GONE

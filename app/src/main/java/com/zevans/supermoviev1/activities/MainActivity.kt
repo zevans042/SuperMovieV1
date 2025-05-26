@@ -27,9 +27,10 @@ import retrofit2.http.HTTP
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var adapter: SuperMovieAdapter
     private var supermovieList: List<Supermovie> = listOf()
+
+    private lateinit var service: SuperMovieServiceApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,61 +38,44 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = SuperMovieAdapter() {
-            onItemClickListener(it)
-        }
+        // Inicializar Retrofit service
+        service = RetrofitProvider.getRetrofit()
+
+        // Inicializar adapter pasándole la referencia correcta a onItemClickListener
+        adapter = SuperMovieAdapter(onClickListener = ::onItemClickListener)
+
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         binding.progress.visibility = View.GONE
         binding.emptyPlaceholder.visibility = View.VISIBLE
-
-        /*// Configuración del OnClickListener para el botón "Acceder"
-        binding.accederButton.setOnClickListener {
-            // Llamar a la función para buscar todas las películas
-            searchSupermovie("")
-        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu items from XML
         if (menuInflater == null || menu == null) {
-            // Handle error, menuInflater or menu is null
             return false
         }
         menuInflater.inflate(R.menu.main_menu, menu)
-
-        // Initialize search view
         initSearchView(menu.findItem(R.id.menu_search))
-
         return true
     }
 
-
     private fun initSearchView(searchItem: MenuItem?) {
         if (searchItem != null) {
-            // Correcto: hacer el cast a androidx.appcompat.widget.SearchView
             val searchView = searchItem.actionView as androidx.appcompat.widget.SearchView
 
-            // Aseguramos que el listener esté bien especificado
-            searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            searchView.setOnQueryTextListener(object :
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    // Llamar a tu función de búsqueda con la consulta ingresada
-                    searchSupermovie(query!!)
-                    // Limpiar el enfoque después de la búsqueda
+                    searchSupermovie(query ?: "")
                     searchView.clearFocus()
                     return true
                 }
 
-                override fun onQueryTextChange(query: String?): Boolean {
-                    // Aquí puedes manejar el cambio de texto si lo necesitas
-                    return false
-                }
+                override fun onQueryTextChange(query: String?): Boolean = false
             })
         }
     }
-
-
 
     private fun onItemClickListener(position: Int) {
         val superMovieItem: Supermovie = supermovieList[position]
@@ -106,17 +90,13 @@ class MainActivity : AppCompatActivity() {
     private fun searchSupermovie(query: String) {
         binding.progress.visibility = View.VISIBLE
 
-        val service: SuperMovieServiceApi = RetrofitProvider.getRetrofit()
-
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = service.searchByName(query)
+                // Pasa el parámetro con nombre para que se entienda bien qué es cada uno
+                val response = service.searchByName(query = query)
 
                 runOnUiThread {
-                    binding.progress.visibility = View.GONE
-
                     if (response.isSuccessful) {
-                        Log.i("HTTP", "respuesta correcta :)")
                         val superMovieResponse = response.body()
                         if (superMovieResponse != null && superMovieResponse.response == "True") {
                             supermovieList = superMovieResponse.search
@@ -130,7 +110,6 @@ class MainActivity : AppCompatActivity() {
                                 binding.emptyPlaceholder.visibility = View.VISIBLE
                             }
                         } else {
-                            Log.i("HTTP", "respuesta con error :(")
                             Toast.makeText(
                                 this@MainActivity,
                                 "No se encontraron resultados",
@@ -138,20 +117,30 @@ class MainActivity : AppCompatActivity() {
                             ).show()
                         }
                     } else {
-                        Log.i("HTTP", "respuesta erronea :(")
                         Toast.makeText(
                             this@MainActivity,
                             "Hubo un error inesperado, vuelva a intentarlo más tarde",
                             Toast.LENGTH_LONG
                         ).show()
                     }
+                    binding.progress.visibility = View.GONE
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
+                runOnUiThread {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Error de red o conexión con el servidor",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    binding.progress.visibility = View.GONE
+                }
             }
         }
     }
 }
+
+
 
 
 
