@@ -6,4 +6,8 @@
     <color name="grey">#8C8C8C</color>
     <color name="transparent_black">#000000</color>
     <color name="Fondo">#2F2F43</color>
+    <color name="app_background">#2B2B38</color>
+    <color name="text_primary">#DDDDDD</color>
+    <color name="text_secondary">#AAAAAA</color>
+
 </resources>

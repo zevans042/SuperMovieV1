@@ -4,5 +4,8 @@
     <string name="menu_search">Buscar</string>
     <string name="empty_SuperMovie_title">No hay películas disponibles</string>
     <string name="empty_SuperMovie_advice">Pulsa la lupa para buscar una película de Marvel</string>
+    <string name="movie_poster">Imagen de la película</string>
+
+
 </resources>
 

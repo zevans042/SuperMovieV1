@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.zevans.supermoviev1.activities.MainActivity">
 
-
+    <!-- Toolbar superior -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -15,17 +15,14 @@
         app:title="@string/app_name"
         app:titleTextColor="@android:color/white" />
 
-
-
-
-    <!-- Contenido del RecyclerView -->
+    <!-- RecyclerView para mostrar resultados -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:background="@color/Fondo"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/Fondo" />
 
-    <!-- Mensaje de vacío -->
+    <!-- Placeholder cuando no hay resultados -->
     <LinearLayout
         android:id="@+id/emptyPlaceholder"
         android:layout_width="match_parent"
@@ -35,22 +32,28 @@
         android:padding="16dp"
         android:visibility="gone">
 
+        <!-- Mensaje -->
         <TextView
             android:id="@+id/realNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="write the movie"
+            android:text="Write the movie"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
-        <!-- Contenido del mensaje de vacío -->
-        <!-- ... -->
-
+        <!-- Imagen  -->
+        <ImageView
+            android:id="@+id/customImage"
+            android:layout_width="250dp"
+            android:layout_height="350dp"
+            android:src="@drawable/mi_imagen"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Imagen personalizada" />
     </LinearLayout>
 
-    <!-- Progreso -->
+    <!-- Carga/progreso -->
     <FrameLayout
         android:id="@+id/progress"
         android:layout_width="match_parent"
@@ -62,9 +65,6 @@
             android:layout_height="64dp"
             android:layout_gravity="center"
             android:indeterminateTint="@color/black" />
-
-
     </FrameLayout>
-
 
 </FrameLayout>
