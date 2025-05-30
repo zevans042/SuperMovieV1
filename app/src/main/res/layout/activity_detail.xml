@@ -10,16 +10,17 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="320dp"
         android:fitsSystemWindows="true"
         android:theme="@style/Theme.SuperMovie.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            android:paddingBottom="8dp"
+            app:titleEnabled="false"
             app:contentScrim="@color/black"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
@@ -27,18 +28,21 @@
             <ImageView
                 android:id="@+id/photoImageView"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:background="@color/Fondo"
                 app:layout_collapseMode="parallax"
                 android:src="@drawable/image_placeholder" />
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.SuperMovie.PopupOverlay" />
+                app:popupTheme="@style/Theme.SuperMovie.PopupOverlay"
+                android:elevation="4dp" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -46,6 +50,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="6dp"
+        android:background="@color/Fondo"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <include

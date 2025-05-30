@@ -4,7 +4,6 @@ import com.google.gson.TypeAdapter
 import com.google.gson.annotations.SerializedName
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
-import java.time.Duration
 
 
 class SuperMovieResponse(

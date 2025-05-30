@@ -1,110 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="15dp">
-
+    android:background="@color/Fondo">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/Fondo"
-        android:padding="10dp">
+        android:padding="16dp">
 
-        <!-- Título -->
+        <!-- TÍTULO -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Título:"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="..."
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp" />
 
-        <!-- Año -->
+        <!-- AÑO -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Año:"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/yearTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cargando..."
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp" />
 
-        <!-- Sinopsis -->
-
-        <!-- Duración -->
-
+        <!-- SINOPSIS -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="20dp"
             android:text="Sinopsis:"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/synopsisTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:text="Cargando..."
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="16dp" />
 
+        <!-- DURACIÓN -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Duración:"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/durationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cargando..."
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp" />
 
-        <!-- Director -->
+        <!-- DIRECTOR -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Director:"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/directorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cargando..."
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp" />
 
-        <!-- Género -->
+        <!-- GÉNERO -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Género:"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/genreTextView"
@@ -112,35 +118,38 @@
             android:layout_height="wrap_content"
             android:text="Cargando..."
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp" />
 
-        <!-- País -->
+        <!-- PAÍS -->
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="País:"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/countryTextView"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cargando..."
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="20dp" />
 
+        <!-- PROGRESSBAR -->
         <FrameLayout
             android:id="@+id/progress"
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
             <ProgressBar
-                android:layout_width="6dp"
-                android:layout_height="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </FrameLayout>
 
     </LinearLayout>
-
-</FrameLayout>
+</ScrollView>

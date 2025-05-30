@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         // Inicializar Retrofit service
         service = RetrofitProvider.getRetrofit()
 
-        // Inicializar adapter pasándole la referencia correcta a onItemClickListener
+
         adapter = SuperMovieAdapter(onClickListener = ::onItemClickListener)
 
         binding.recyclerView.adapter = adapter
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Pasa el parámetro con nombre para que se entienda bien qué es cada uno
+
                 val response = service.searchByName(query = query)
 
                 runOnUiThread {
